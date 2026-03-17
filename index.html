@@ -77,6 +77,11 @@ nav .nav-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 30px rgba(170,59,255,0.3);
 }
+.scroll-progress {
+  position: absolute; bottom: 0; left: 0; height: 2px;
+  width: 0%; background: var(--gradient-h);
+  transition: width 0.05s linear;
+}
 
 /* ---- HERO ---- */
 .hero {
@@ -825,11 +830,12 @@ footer p { color: var(--graphite); font-size: 0.8rem; }
   <div class="nav-links">
     <a href="#product">Product</a>
     <a href="#market">Market</a>
-    <a href="#funds">Use of Funds</a>
     <a href="#team">Team</a>
     <a href="#timeline">Timeline</a>
+    <a href="#funds">Use of Funds</a>
     <a href="#ask" class="nav-cta">The Ask</a>
   </div>
+  <div class="scroll-progress"></div>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -1803,7 +1809,8 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Navbar background on scroll
+// Navbar background + scroll progress
+const progressBar = document.querySelector('.scroll-progress');
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   if (window.scrollY > 50) {
@@ -1813,6 +1820,11 @@ window.addEventListener('scroll', () => {
     nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
     nav.style.background = 'rgba(0,2,2,0.85)';
   }
+  // Scroll progress
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = scrollPercent + '%';
 });
 </script>
 
