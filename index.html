@@ -1901,7 +1901,7 @@ window.addEventListener('scroll', () => {
 
 // ---- VISITOR TRACKER ----
 (function() {
-  const WEBHOOK_URL = '__GOOGLE_APPS_SCRIPT_URL__'; // Replace with your deployed Apps Script URL
+  const WEBHOOK_URL = 'https://script.google.com/a/macros/audria.tech/s/AKfycbyXGM4623EgH3-6u3X93tQ54psV0JZvlbW7h3d5ZqYaVp1kYSuuIiFg8qmIGH7PpEf-zA/exec';
   if (WEBHOOK_URL.includes('__GOOGLE')) return; // Skip if not configured
 
   const visitId = Date.now() + '-' + Math.random().toString(36).substr(2, 6);
