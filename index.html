@@ -1898,6 +1898,57 @@ window.addEventListener('scroll', () => {
     if (activeDot) activeDot.classList.add('active');
   }
 });
+
+// ---- VISITOR TRACKER ----
+(function() {
+  const WEBHOOK_URL = '__GOOGLE_APPS_SCRIPT_URL__'; // Replace with your deployed Apps Script URL
+  if (WEBHOOK_URL.includes('__GOOGLE')) return; // Skip if not configured
+
+  const visitId = Date.now() + '-' + Math.random().toString(36).substr(2, 6);
+  const startTime = Date.now();
+  let maxScroll = 0;
+  const sectionsViewed = new Set();
+  const sectionEls = document.querySelectorAll('section[id]');
+
+  // Track max scroll depth
+  window.addEventListener('scroll', function() {
+    const scrollPct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+    if (scrollPct > maxScroll) maxScroll = scrollPct;
+  });
+
+  // Track sections viewed via Intersection Observer
+  const trackObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && entry.target.id) {
+        sectionsViewed.add(entry.target.id);
+      }
+    });
+  }, { threshold: 0.3 });
+  sectionEls.forEach(function(el) { trackObserver.observe(el); });
+
+  // Send data on page leave
+  function sendData() {
+    const data = {
+      visitId: visitId,
+      timestamp: new Date().toISOString(),
+      timeOnPage: Math.round((Date.now() - startTime) / 1000),
+      maxScrollPct: maxScroll,
+      sectionsViewed: Array.from(sectionsViewed).join(', '),
+      referrer: document.referrer || 'direct',
+      userAgent: navigator.userAgent,
+      screenSize: screen.width + 'x' + screen.height,
+      language: navigator.language,
+      url: location.href
+    };
+    const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+    navigator.sendBeacon(WEBHOOK_URL, blob);
+  }
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') sendData();
+  });
+  window.addEventListener('beforeunload', sendData);
+})();
 </script>
 
 </body>
