@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audria | Voice-First Ambient Intelligence</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AUDRIA INVESTOR PITCH WEBSITE
+   Brand Colors:
+   - Primary Purple: #AA3BFF / #B850FD
+   - Primary Green/Teal: #06B58D / #15BF84
+   - Black: #000202
+   - Light: #F6FBFF
+   Gradient: #15BF84 → #B850FD
+   ============================================ */
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+:root {
+  --purple: #AA3BFF;
+  --green: #06B58D;
+  --green-light: #15BF84;
+  --black: #000202;
+  --phantom: #1E1E24;
+  --arsenic: #40424D;
+  --graphite: #6E7180;
+  --steel: #BCBFCC;
+  --smoke: #D3D6E0;
+  --cloud: #EDEFF7;
+  --light: #F6FBFF;
+  --gradient: linear-gradient(135deg, #15BF84, #B850FD);
+  --gradient-h: linear-gradient(90deg, #15BF84, #B850FD);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--black);
+  color: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1.25rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(0,2,2,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s;
+}
+nav img { height: 28px; }
+nav .nav-links { display: flex; gap: 2rem; align-items: center; }
+nav .nav-links a {
+  color: var(--steel); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s;
+}
+nav .nav-links a:hover { color: #fff; }
+nav .nav-cta {
+  padding: 0.55rem 1.5rem; border-radius: 100px;
+  background: var(--gradient); color: #fff; font-weight: 600;
+  font-size: 0.82rem; text-decoration: none; letter-spacing: 0.02em;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+nav .nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(170,59,255,0.3);
+}
+.scroll-progress {
+  position: absolute; bottom: 0; left: 0; height: 2px;
+  width: 0%; background: var(--gradient-h);
+  transition: width 0.05s linear;
+}
+
+/* ---- VERTICAL SCROLL INDICATOR ---- */
+.scroll-indicator {
+  position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%);
+  z-index: 999; display: flex; flex-direction: column; gap: 12px;
+  align-items: center;
+}
+.si-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  cursor: pointer; transition: all 0.3s;
+  position: relative;
+}
+.si-dot:hover {
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.4);
+}
+.si-dot.active {
+  background: var(--purple);
+  box-shadow: 0 0 8px rgba(170,59,255,0.5);
+  transform: scale(1.5);
+}
+.si-tooltip {
+  position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+  background: rgba(0,2,2,0.9); color: var(--steel); font-size: 0.7rem;
+  font-weight: 600; padding: 0.3rem 0.7rem; border-radius: 6px;
+  white-space: nowrap; opacity: 0; pointer-events: none;
+  transition: opacity 0.2s; border: 1px solid rgba(255,255,255,0.08);
+}
+.si-dot:hover .si-tooltip { opacity: 1; }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 8rem 3rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -30%; right: -20%;
+  width: 900px; height: 900px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(170,59,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; top: -10%; left: -10%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,181,141,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content {
+  max-width: 1300px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-text h1 {
+  font-size: 4.2rem; font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.03em; margin-bottom: 1.5rem;
+}
+.hero-text h1 .gradient-text {
+  background: var(--gradient-h); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-text .tagline {
+  font-size: 1.2rem; color: var(--steel); line-height: 1.7;
+  max-width: 520px; margin-bottom: 2.5rem; font-weight: 400;
+}
+.hero-text .hero-stats {
+  display: flex; gap: 3rem; margin-bottom: 2.5rem;
+}
+.hero-text .hero-stats .stat-item .stat-value {
+  font-size: 2.2rem; font-weight: 800;
+  background: var(--gradient-h); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-text .hero-stats .stat-item .stat-label {
+  font-size: 0.78rem; color: var(--graphite); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem;
+}
+.hero-ctas { display: flex; gap: 1rem; }
+.btn-primary {
+  padding: 0.85rem 2.2rem; border-radius: 100px;
+  background: var(--gradient); color: #fff; font-weight: 600;
+  font-size: 0.9rem; text-decoration: none; border: none; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(170,59,255,0.35);
+}
+.btn-secondary {
+  padding: 0.85rem 2.2rem; border-radius: 100px;
+  background: transparent; color: #fff; font-weight: 600;
+  font-size: 0.9rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.3s; cursor: pointer;
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05);
+}
+.hero-product {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.hero-product img {
+  width: 100%; max-width: 520px; border-radius: 20px;
+  filter: drop-shadow(0 30px 80px rgba(170,59,255,0.15));
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ---- SECTIONS ---- */
+section {
+  padding: 7rem 3rem;
+  max-width: 1300px; margin: 0 auto;
+}
+.section-label {
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--green); margin-bottom: 1rem;
+}
+.section-title {
+  font-size: 2.8rem; font-weight: 800; line-height: 1.15;
+  letter-spacing: -0.02em; margin-bottom: 1.2rem;
+}
+.section-subtitle {
+  font-size: 1.1rem; color: var(--steel); line-height: 1.7;
+  max-width: 640px; margin-bottom: 3.5rem;
+}
+.divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  max-width: 1300px; margin: 0 auto;
+}
+
+/* ---- COMPUTING EVOLUTION FLOW ---- */
+.computing-evolution-flow {
+  display: flex; align-items: stretch; gap: 0; margin-bottom: 0;
+}
+.cev-step {
+  flex: 1; padding: 1.8rem 1.4rem; border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: all 0.3s;
+}
+.cev-step:hover { border-color: rgba(255,255,255,0.12); }
+.cev-highlight {
+  border-color: rgba(170,59,255,0.25) !important;
+  background: rgba(170,59,255,0.05);
+}
+.cev-num {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 800; color: var(--graphite);
+  border: 2px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);
+}
+.cev-highlight .cev-num {
+  background: var(--gradient); color: #fff; border-color: transparent;
+}
+.cev-content h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+.cev-content p { font-size: 0.82rem; color: var(--graphite); line-height: 1.5; }
+.cev-highlight .cev-content h4 { color: #fff; }
+.cev-highlight .cev-content p { color: var(--steel); }
+.cev-arrow {
+  display: flex; align-items: center; color: var(--graphite);
+  font-size: 1.2rem; padding: 0 0.3rem; flex-shrink: 0;
+}
+
+/* ---- AI LAYERS VISUAL ---- */
+.ai-layers {
+  max-width: 800px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 0;
+}
+.ai-layer {
+  padding: 2rem 2.5rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+.ai-layer.layer-hw { border-color: rgba(6,181,141,0.15); background: rgba(6,181,141,0.02); }
+.ai-layer.layer-npu { border-color: rgba(170,59,255,0.15); background: rgba(170,59,255,0.02); }
+.ai-layer.layer-cloud {
+  border-color: rgba(170,59,255,0.2);
+  background: linear-gradient(135deg, rgba(6,181,141,0.03), rgba(170,59,255,0.03));
+}
+.al-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+.al-badge {
+  font-size: 0.6rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; padding: 0.25rem 0.7rem; border-radius: 100px;
+}
+.al-chip {
+  font-size: 0.7rem; color: var(--graphite); font-weight: 500;
+}
+.al-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.2rem; }
+.al-subtitle { font-size: 0.82rem; color: var(--steel); margin-bottom: 1.2rem; }
+.al-flow {
+  display: flex; align-items: center; gap: 1rem;
+}
+.al-metric-in, .al-metric-out {
+  flex-shrink: 0; text-align: center; min-width: 80px;
+}
+.al-metric-val { font-size: 1.3rem; font-weight: 800; color: var(--steel); }
+.al-metric-label { font-size: 0.65rem; color: var(--graphite); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.1rem; }
+.al-arrow-block { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+.al-arrow-line { height: 3px; width: 100%; border-radius: 3px; }
+.al-arrow-desc { font-size: 0.72rem; color: var(--graphite); text-align: center; }
+.ai-layer-connector {
+  text-align: center; font-size: 1.5rem; color: var(--graphite);
+  padding: 0.3rem 0; line-height: 1;
+}
+
+/* ---- PROBLEM / SOLUTION ---- */
+.problem-solution {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+}
+.ps-card {
+  padding: 3rem; border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.3s;
+}
+.ps-card:hover { border-color: rgba(255,255,255,0.12); }
+.ps-card .ps-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 1.5rem;
+}
+.ps-card.problem .ps-icon { background: rgba(255,80,80,0.12); }
+.ps-card.solution .ps-icon { background: rgba(6,181,141,0.12); }
+.ps-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.ps-card p { color: var(--steel); line-height: 1.75; font-size: 0.95rem; }
+
+/* ---- PRODUCT SECTION ---- */
+.product-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  margin-top: 3rem;
+}
+.product-img-card {
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: transform 0.4s, border-color 0.3s;
+}
+.product-img-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(170,59,255,0.3);
+}
+.product-img-card img { width: 100%; display: block; }
+.product-img-card .img-label {
+  padding: 1.2rem 1.5rem;
+  font-size: 0.85rem; color: var(--steel); font-weight: 500;
+}
+
+/* ---- FEATURES ---- */
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.feature-card {
+  padding: 2.5rem 2rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.3s;
+}
+.feature-card:hover {
+  border-color: rgba(170,59,255,0.2);
+  background: rgba(255,255,255,0.03);
+}
+.feature-card .f-icon {
+  font-size: 2rem; margin-bottom: 1.2rem;
+  display: block;
+}
+.feature-card h4 {
+  font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem;
+}
+.feature-card p {
+  color: var(--graphite); font-size: 0.88rem; line-height: 1.65;
+}
+
+/* ---- MARKET VALIDATION ---- */
+.market-cards {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+  margin-top: 3rem;
+}
+.market-card {
+  padding: 2.5rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  position: relative; overflow: hidden;
+}
+.market-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--gradient);
+}
+.market-card h4 {
+  font-size: 1.15rem; font-weight: 700; margin-bottom: 0.8rem;
+}
+.market-card p {
+  color: var(--steel); font-size: 0.9rem; line-height: 1.7;
+}
+
+/* ---- USE OF FUNDS ---- */
+.funds-container {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem;
+  align-items: start; margin-top: 3rem;
+}
+.funds-visual {
+  position: relative;
+}
+.funds-bar-group {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.fund-item {
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.fund-item .fund-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.fund-item .fund-label {
+  font-size: 0.88rem; font-weight: 500; color: #fff;
+}
+.fund-item .fund-amount {
+  font-size: 0.88rem; font-weight: 700;
+  background: var(--gradient-h); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.fund-item .fund-bar {
+  height: 10px; border-radius: 100px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+.fund-item .fund-bar-fill {
+  height: 100%; border-radius: 100px;
+  background: var(--gradient);
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.funds-summary {
+  padding: 2.5rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+.funds-summary .fund-total {
+  font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;
+  background: var(--gradient-h); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.funds-summary .fund-total-label {
+  font-size: 0.9rem; color: var(--graphite); margin-bottom: 2rem;
+}
+.funds-summary .fund-detail {
+  display: flex; justify-content: space-between; padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.85rem;
+}
+.funds-summary .fund-detail:last-child { border-bottom: none; }
+.funds-summary .fund-detail .fd-label { color: var(--steel); }
+.funds-summary .fund-detail .fd-value { color: #fff; font-weight: 600; }
+
+/* ---- USE CASES ---- */
+.usecase-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  margin-top: 3rem;
+}
+.usecase-card {
+  padding: 2.2rem 1.8rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.3s;
+}
+.usecase-card:hover {
+  border-color: rgba(6,181,141,0.2);
+  transform: translateY(-3px);
+}
+.usecase-card .uc-icon { font-size: 2rem; margin-bottom: 1rem; }
+.usecase-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+.usecase-card p { color: var(--graphite); font-size: 0.85rem; line-height: 1.65; }
+
+/* ---- TEAM ---- */
+.team-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  margin-top: 3rem;
+}
+.team-card {
+  padding: 2.5rem 2rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  text-align: center; transition: all 0.3s;
+}
+.team-card:hover { border-color: rgba(170,59,255,0.2); }
+.team-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--gradient);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; font-weight: 700; color: #fff;
+  margin: 0 auto 1.2rem;
+}
+.team-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+.team-card p { font-size: 0.8rem; color: var(--graphite); }
+.team-card.founder {
+  grid-column: span 2;
+  display: grid; grid-template-columns: auto 1fr; gap: 1.5rem;
+  text-align: left; align-items: center;
+}
+.team-card.founder .team-avatar {
+  width: 80px; height: 80px; font-size: 1.8rem; margin: 0;
+}
+.team-card.founder h4 { font-size: 1.1rem; }
+.team-card.founder .founder-details {
+  font-size: 0.85rem; color: var(--steel); line-height: 1.6; margin-top: 0.4rem;
+}
+
+/* ---- TEAM V2 ---- */
+.team-founder-spotlight {
+  display: flex; align-items: center; gap: 2rem;
+  padding: 2.5rem; border-radius: 24px;
+  border: 1px solid rgba(170,59,255,0.15);
+  background: linear-gradient(135deg, rgba(170,59,255,0.04), rgba(6,181,141,0.02));
+  margin-bottom: 2.5rem;
+}
+.tfs-photo img {
+  width: 100px; height: 100px; border-radius: 50%;
+  border: 3px solid rgba(170,59,255,0.3);
+  object-fit: cover;
+}
+.tfs-name { font-size: 1.4rem; font-weight: 800; }
+.tfs-role {
+  font-size: 0.82rem; font-weight: 600;
+  background: var(--gradient-h); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.5rem;
+}
+.tfs-bio { font-size: 0.88rem; color: var(--steel); line-height: 1.6; }
+
+.team-grid-v2 {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.team-card-v2 {
+  padding: 1.8rem 1.2rem; border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  text-align: center; transition: all 0.3s;
+}
+.team-card-v2:hover { border-color: rgba(170,59,255,0.2); transform: translateY(-3px); }
+.tc-photo {
+  width: 64px; height: 64px; border-radius: 50%;
+  margin-bottom: 1rem; border: 2px solid rgba(255,255,255,0.08);
+  object-fit: cover;
+}
+.tc-name { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.15rem; }
+.tc-role { font-size: 0.72rem; color: var(--green); font-weight: 600; margin-bottom: 0.3rem; }
+.tc-desc { font-size: 0.72rem; color: var(--graphite); line-height: 1.4; }
+
+.team-partner-card {
+  margin-top: 0.5rem; padding: 2rem; border-radius: 20px;
+  border: 1px solid rgba(6,181,141,0.15);
+  background: rgba(6,181,141,0.03);
+}
+.tpc-badge {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--green); margin-bottom: 1rem;
+}
+.tpc-content { display: flex; align-items: center; gap: 1.5rem; }
+.tpc-photo {
+  width: 64px; height: 64px; border-radius: 50%;
+  border: 2px solid rgba(6,181,141,0.2); flex-shrink: 0;
+  object-fit: cover;
+}
+.tpc-name { font-size: 1rem; font-weight: 700; }
+.tpc-role { font-size: 0.78rem; color: var(--green); font-weight: 500; margin-bottom: 0.3rem; }
+.tpc-desc { font-size: 0.82rem; color: var(--steel); line-height: 1.5; }
+
+/* ---- SIMPLE TIMELINE ---- */
+.simple-timeline { margin-top: 2.5rem; }
+.st-year-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.15em; margin-bottom: 1rem;
+}
+.st-year-label.past { color: var(--graphite); }
+.st-year-label.current {
+  color: var(--purple); margin-top: 2.5rem;
+}
+.st-row {
+  display: flex; align-items: flex-start; gap: 0;
+  overflow-x: auto; padding-bottom: 1rem;
+}
+.st-connector {
+  width: 24px; min-width: 24px; height: 2px;
+  margin-top: 8px; flex-shrink: 0;
+}
+.st-connector.done { background: var(--green); opacity: 0.3; }
+.st-connector.future { background: var(--purple); opacity: 0.2; }
+.st-node {
+  display: flex; flex-direction: column; align-items: center;
+  min-width: 80px; text-align: center; position: relative;
+  flex-shrink: 0;
+}
+.st-dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 3px solid var(--graphite); background: var(--black);
+  margin-bottom: 0.5rem; flex-shrink: 0;
+}
+.st-node.done .st-dot { border-color: var(--green); background: rgba(6,181,141,0.15); }
+.st-node.now .st-dot {
+  border-color: var(--purple); background: var(--purple);
+  box-shadow: 0 0 12px rgba(170,59,255,0.5);
+}
+.st-node.future .st-dot { border-color: rgba(170,59,255,0.3); }
+.st-node.launch .st-dot {
+  border-color: var(--green); background: var(--green);
+  box-shadow: 0 0 12px rgba(6,181,141,0.5);
+}
+.st-date {
+  font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--graphite); margin-bottom: 0.2rem;
+}
+.st-node.now .st-date { color: var(--purple); }
+.st-node.launch .st-date { color: var(--green); }
+.st-title { font-size: 0.72rem; color: var(--steel); line-height: 1.3; max-width: 100px; }
+.st-node.now .st-title { color: #fff; font-weight: 600; }
+.st-node.launch .st-title { color: #fff; font-weight: 700; }
+.st-label-now {
+  position: absolute; top: -20px;
+  font-size: 0.55rem; font-weight: 800; color: var(--purple);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ---- GTM PLATFORM VISUAL ---- */
+.gtm-visual {
+  margin-top: 3rem; position: relative;
+}
+.gtm-verticals {
+  display: flex; gap: 6px; align-items: flex-end;
+  padding: 0 1rem; margin-bottom: 0;
+  flex-wrap: nowrap;
+}
+.gtm-bar {
+  flex: 1; min-width: 0;
+  border-radius: 10px 10px 0 0;
+  padding: 1rem 0.4rem 1.2rem;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  transition: all 0.3s;
+  cursor: default;
+}
+.gtm-bar:hover { transform: translateY(-4px); }
+.gtm-bar .gtm-icon { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.gtm-bar .gtm-label {
+  font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; line-height: 1.25;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  transform: rotate(180deg);
+  max-height: 90px;
+}
+.gtm-bar { height: 160px; }
+.gtm-bar.c1 { background: linear-gradient(180deg, rgba(170,59,255,0.3), rgba(170,59,255,0.08)); border: 1px solid rgba(170,59,255,0.15); border-bottom: none; }
+.gtm-bar.c1 .gtm-label { color: rgba(170,59,255,0.8); }
+.gtm-bar.c2 { background: linear-gradient(180deg, rgba(6,181,141,0.25), rgba(6,181,141,0.06)); border: 1px solid rgba(6,181,141,0.12); border-bottom: none; }
+.gtm-bar.c2 .gtm-label { color: rgba(6,181,141,0.8); }
+
+.gtm-foundation {
+  border-radius: 16px; padding: 1.8rem 2rem;
+  background: linear-gradient(90deg, rgba(6,181,141,0.1), rgba(170,59,255,0.1));
+  border: 2px solid;
+  border-image: linear-gradient(90deg, rgba(6,181,141,0.3), rgba(170,59,255,0.3)) 1;
+  text-align: center; position: relative;
+}
+.gtm-foundation .gtm-f-label {
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--gradient-h); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.3rem;
+}
+.gtm-foundation .gtm-f-desc {
+  font-size: 0.82rem; color: var(--steel); line-height: 1.5;
+}
+.gtm-var-tag {
+  position: absolute; top: -10px; right: 1.5rem;
+  font-size: 0.55rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--purple);
+  background: var(--black); padding: 0 0.5rem;
+}
+.gtm-legend {
+  display: flex; gap: 2rem; margin-top: 1.5rem; justify-content: center;
+}
+.gtm-legend-item {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.7rem; color: var(--graphite);
+}
+.gtm-legend-dot {
+  width: 8px; height: 8px; border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .team-grid-v2 { grid-template-columns: repeat(3, 1fr); }
+  .team-founder-spotlight { flex-direction: column; text-align: center; }
+  .gtm-bar .gtm-label { font-size: 0.55rem; }
+}
+@media (max-width: 768px) {
+  .team-grid-v2 { grid-template-columns: repeat(2, 1fr); }
+  .tpc-content { flex-direction: column; text-align: center; }
+  .gtm-verticals { flex-wrap: wrap; }
+  .gtm-bar { flex: 1 1 calc(20% - 6px); min-width: 60px; }
+  .gtm-bar { height: auto; min-height: 80px; }
+  .gtm-bar .gtm-label { writing-mode: horizontal-tb; transform: none; max-height: none; }
+}
+
+/* ---- ASK / CTA ---- */
+.ask-section {
+  text-align: center; padding: 8rem 3rem;
+  position: relative;
+}
+.ask-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(170,59,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.ask-numbers {
+  display: flex; justify-content: center; gap: 5rem;
+  margin: 3rem 0;
+}
+.ask-num .ask-value {
+  font-size: 3.5rem; font-weight: 800;
+  background: var(--gradient-h); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.ask-num .ask-label {
+  font-size: 0.85rem; color: var(--graphite); margin-top: 0.3rem;
+}
+.ask-goals {
+  display: flex; justify-content: center; gap: 2rem;
+  margin-top: 3rem; flex-wrap: wrap;
+}
+.ask-goal {
+  padding: 0.8rem 1.8rem; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  font-size: 0.85rem; color: var(--steel);
+}
+
+/* ---- VISION ---- */
+.vision-section {
+  text-align: center; padding: 6rem 3rem;
+  max-width: 800px; margin: 0 auto;
+}
+.vision-section .vision-text {
+  font-size: 1.6rem; font-weight: 300; line-height: 1.8;
+  color: var(--steel);
+}
+.vision-section .vision-text em {
+  font-style: normal; color: #fff; font-weight: 600;
+}
+
+/* ---- COMPUTING EVOLUTION ---- */
+.evolution {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; margin: 3rem 0; flex-wrap: wrap;
+}
+.evo-stage {
+  padding: 0.8rem 1.8rem; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.9rem; font-weight: 500; color: var(--graphite);
+  transition: all 0.3s;
+}
+.evo-stage.past { color: var(--steel); }
+.evo-stage.current {
+  background: var(--gradient); color: #fff; border-color: transparent;
+  box-shadow: 0 8px 30px rgba(170,59,255,0.25);
+}
+.evo-arrow {
+  color: var(--graphite); font-size: 1.2rem;
+}
+
+/* ---- IDEA PROOF ---- */
+.idea-proof-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.ip-card {
+  padding: 2.5rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; transition: all 0.3s;
+  text-decoration: none; color: inherit;
+}
+.ip-card:hover { border-color: rgba(170,59,255,0.2); }
+.ip-link { cursor: pointer; }
+.ip-link:hover .ip-watch { color: var(--green); }
+.ip-play {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(170,59,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; color: var(--purple);
+}
+.ip-quote {
+  font-size: 1rem; font-style: italic; line-height: 1.7;
+  color: var(--steel); margin-bottom: 1.5rem;
+  padding-right: 2rem;
+}
+.ip-card:first-child .ip-quote { font-size: 1.05rem; }
+.ip-author { margin-top: auto; }
+.ip-name { font-size: 0.95rem; font-weight: 700; color: #fff; }
+.ip-role { font-size: 0.78rem; color: var(--graphite); margin-top: 0.15rem; }
+.ip-watch {
+  font-size: 0.78rem; font-weight: 600; color: var(--purple);
+  margin-top: 0.8rem; transition: color 0.3s;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  padding: 3rem; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer img { height: 24px; margin-bottom: 1rem; }
+footer p { color: var(--graphite); font-size: 0.8rem; }
+
+/* ---- SCROLL ANIMATIONS ---- */
+.fade-in {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .scroll-indicator { display: none; }
+  .hero-content { grid-template-columns: 1fr; text-align: center; }
+  .hero-text .tagline { margin: 0 auto 2.5rem; }
+  .hero-text .hero-stats { justify-content: center; }
+  .hero-ctas { justify-content: center; }
+  .hero-product { margin-top: 3rem; }
+  .problem-solution { grid-template-columns: 1fr; gap: 2rem; }
+  .computing-evolution-flow { flex-wrap: wrap; gap: 0.8rem; }
+  .cev-arrow { display: none; }
+  .cev-step { flex: 1 1 calc(50% - 0.5rem); }
+  .features-grid, .usecase-grid { grid-template-columns: 1fr 1fr; }
+  .funds-container { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-card.founder { grid-column: span 2; }
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  nav .nav-links { display: none; }
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .hero-text h1 { font-size: 2.8rem; }
+  section { padding: 4rem 1.5rem; }
+  .section-title { font-size: 2rem; }
+  .computing-evolution-flow { flex-direction: column; }
+  .cev-step { flex: 1 1 100%; }
+  .features-grid, .usecase-grid, .product-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .team-card.founder { grid-column: span 1; grid-template-columns: 1fr; text-align: center; }
+  .team-card.founder .team-avatar { margin: 0 auto; }
+  .market-cards { grid-template-columns: 1fr; }
+  .idea-proof-grid { grid-template-columns: 1fr; }
+  .ask-numbers { gap: 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav>
+  <img src="assets/logo-white.png" alt="Audria">
+  <div class="nav-links">
+    <a href="#arc">Arc</a>
+    <a href="#usecases">Use Cases</a>
+    <a href="#product">Product</a>
+    <a href="#market">Market</a>
+    <a href="#team">Team</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#proof">Proof</a>
+    <a href="#ask" class="nav-cta">The Ask</a>
+  </div>
+  <div class="scroll-progress"></div>
+</nav>
+
+<!-- ============ VERTICAL SCROLL INDICATOR ============ -->
+<div class="scroll-indicator">
+  <div class="si-dot" data-section="arc"><div class="si-tooltip">Arc</div></div>
+  <div class="si-dot" data-section="usecases"><div class="si-tooltip">Use Cases</div></div>
+  <div class="si-dot" data-section="product"><div class="si-tooltip">Product</div></div>
+  <div class="si-dot" data-section="gtm"><div class="si-tooltip">Go-To-Market</div></div>
+  <div class="si-dot" data-section="market"><div class="si-tooltip">Market</div></div>
+  <div class="si-dot" data-section="team"><div class="si-tooltip">Team</div></div>
+  <div class="si-dot" data-section="timeline"><div class="si-tooltip">Timeline</div></div>
+  <div class="si-dot" data-section="funds"><div class="si-tooltip">Use of Funds</div></div>
+  <div class="si-dot" data-section="proof"><div class="si-tooltip">Idea Proof</div></div>
+  <div class="si-dot" data-section="ask"><div class="si-tooltip">The Ask</div></div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>
+        <span class="gradient-text">Voice-first</span><br>
+        ambient<br>intelligence.
+      </h1>
+      <p class="tagline"></p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value">15,000</div>
+          <div class="stat-label">Units Complete by Sep</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">Nov '26</div>
+          <div class="stat-label">US Launch</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-product">
+      <img src="assets/product-1.png" alt="Arc by Audria">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ PROBLEM / SOLUTION ============ -->
+<section class="fade-in">
+  <div class="section-label">The Opportunity</div>
+  <div class="section-title">Computing is going hands-free.</div>
+  <div class="section-subtitle"></div>
+
+  <!-- Computing evolution narrative -->
+  <div class="computing-evolution-flow">
+    <div class="cev-step">
+      <div class="cev-num">1</div>
+      <div class="cev-content">
+        <h4>Q&amp;A with ChatGPT</h4>
+      </div>
+    </div>
+    <div class="cev-arrow">&#x2192;</div>
+    <div class="cev-step">
+      <div class="cev-num">2</div>
+      <div class="cev-content">
+        <h4>Vibe-coding &amp; computer use</h4>
+      </div>
+    </div>
+    <div class="cev-arrow">&#x2192;</div>
+    <div class="cev-step">
+      <div class="cev-num">3</div>
+      <div class="cev-content">
+        <h4>Voice as the interface</h4>
+      </div>
+    </div>
+    <div class="cev-arrow">&#x2192;</div>
+    <div class="cev-step cev-highlight">
+      <div class="cev-num">4</div>
+      <div class="cev-content">
+        <h4>Ambient intelligence</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="problem-solution" style="margin-top: 3.5rem;">
+    <div class="ps-card problem">
+      <div class="ps-icon">&#x26A0;</div>
+      <h3>The Problem</h3>
+      <p>AI works for people at desks. Not for people on the move.</p>
+    </div>
+    <div class="ps-card solution">
+      <div class="ps-icon">&#x2728;</div>
+      <h3>The Solution</h3>
+      <p>Always listening. Always acting. No screen. Just voice.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ MEET ARC ============ -->
+<section id="arc" class="fade-in">
+  <div class="section-label">Introducing</div>
+  <div class="section-title">Meet Arc.</div>
+  <div class="section-subtitle">Behind-the-ear. All-day wear. Open ears. Ultra-light.</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+    <div class="product-img-card" style="overflow: hidden;">
+      <img src="assets/product-lifestyle-1.png" alt="Arc worn, profile" style="object-fit: cover; height: 400px;">
+      <div class="img-label">Arc | Worn behind the ear</div>
+    </div>
+    <div class="product-img-card" style="overflow: hidden;">
+      <img src="assets/product-lifestyle-2.png" alt="Arc worn, close-up" style="object-fit: cover; height: 400px;">
+      <div class="img-label">Arc | Close-up on ear</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ USE CASES ============ -->
+<section id="usecases" class="fade-in">
+  <div class="section-label">Use Cases</div>
+  <div class="section-title">Value in every conversation.</div>
+  <div class="section-subtitle"></div>
+  <div class="usecase-grid">
+    <div class="usecase-card">
+      <div class="uc-icon">&#x1F4AD;</div>
+      <h4>Memory &amp; Recall</h4>
+    </div>
+    <div class="usecase-card">
+      <div class="uc-icon">&#x1F514;</div>
+      <h4>Proactive Reminders</h4>
+    </div>
+    <div class="usecase-card">
+      <div class="uc-icon">&#x26A1;</div>
+      <h4>Conversation to Action</h4>
+    </div>
+    <div class="usecase-card">
+      <div class="uc-icon">&#x1F4BC;</div>
+      <h4>Professional Productivity</h4>
+    </div>
+    <div class="usecase-card">
+      <div class="uc-icon">&#x1F3E2;</div>
+      <h4>Enterprise</h4>
+    </div>
+    <div class="usecase-card">
+      <div class="uc-icon">&#x2764;</div>
+      <h4>Accessibility</h4>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ TARGET MARKET ============ -->
+<section class="fade-in">
+  <div class="section-label">Target Market</div>
+  <div class="section-title">Built for people on the move.</div>
+  <div class="section-subtitle"></div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+    <div class="ps-card solution" style="border-color: rgba(6,181,141,0.12);">
+      <div class="ps-icon" style="background: rgba(6,181,141,0.12);">&#x1F5E3;</div>
+      <h3>Conversation-heavy professionals</h3>
+      <p>Sales reps. Doctors. Recruiters. Real estate agents. Lawyers.</p>
+    </div>
+    <div class="ps-card solution" style="border-color: rgba(170,59,255,0.12);">
+      <div class="ps-icon" style="background: rgba(170,59,255,0.12);">&#x1F9E0;</div>
+      <h3>Proactive ambient intelligence</h3>
+      <p>Computing that anticipates, not just responds.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ PRODUCT: HARDWARE + SOFTWARE ============ -->
+<section id="product" class="fade-in">
+  <div class="section-label">Product Deep Dive</div>
+  <div class="section-title">World-class technology.</div>
+
+  <!-- Hardware: Renders & Evolution -->
+  <div style="margin-bottom: 3rem;">
+    <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green); margin-bottom: 1.5rem;">&#x2699; Hardware</div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
+      <div class="product-img-card">
+        <img src="assets/product-black-1.png" alt="Arc Black, angled">
+        <div class="img-label">Matte Black</div>
+      </div>
+      <div class="product-img-card">
+        <img src="assets/product-black-2.png" alt="Arc Black, detail">
+        <div class="img-label">Matte Black</div>
+      </div>
+      <div class="product-img-card">
+        <img src="assets/product-1.png" alt="Arc Gold, angled">
+        <div class="img-label">Champagne Gold</div>
+      </div>
+      <div class="product-img-card">
+        <img src="assets/product-2.png" alt="Arc Gold, detail">
+        <div class="img-label">Champagne Gold</div>
+      </div>
+    </div>
+    <div class="product-img-card" style="overflow: hidden; max-width: 700px;">
+      <img src="assets/product-evolution.jpeg" alt="Arc prototype evolution v1 to v5" style="width: 100%; object-fit: contain;">
+      <div class="img-label">Arc prototype evolution: v1 through v5. Real hardware, real iteration.</div>
+    </div>
+  </div>
+
+  <!-- Key Hardware Design Choices -->
+  <div style="margin-bottom: 3rem;">
+    <div style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;">Built different.</div>
+    <div style="font-size: 0.95rem; color: var(--steel); max-width: 650px; margin-bottom: 2rem;"></div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="f-icon">&#x2600;</span>
+        <h4>All-Day Wear</h4>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">&#x1F442;</span>
+        <h4>Open-Ear Audio</h4>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">&#x1F399;</span>
+        <h4>3-Mic Beamforming</h4>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">&#x1F4A0;</span>
+        <h4>Head Gesture Control</h4>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">&#x1F453;</span>
+        <h4>Works With Your Stack</h4>
+      </div>
+      <div class="feature-card">
+        <span class="f-icon">&#x1F7E2;</span>
+        <h4>LED Status Rings</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3-Layer AI Architecture Visual -->
+  <div style="margin-bottom: 4rem;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--purple); margin-bottom: 0.5rem;">Your bet on world-class technology</div>
+      <div style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem;">Layered AI Architecture</div>
+      <div style="font-size: 0.95rem; color: var(--steel); max-width: 600px; margin: 0 auto;"></div>
+    </div>
+
+    <div class="ai-layers">
+      <!-- Layer 1: Hardware VAD -->
+      <div class="ai-layer layer-hw">
+        <div class="al-header">
+          <div class="al-badge" style="background: rgba(6,181,141,0.15); color: var(--green);">Layer 1</div>
+          <div class="al-chip">&#x1F4E1; On Hardware</div>
+        </div>
+        <div class="al-title">Voice Activity Detection</div>
+        <div class="al-subtitle">Premium Qualcomm chip on Arc</div>
+        <div class="al-flow">
+          <div class="al-metric-in">
+            <div class="al-metric-val">16 hrs</div>
+            <div class="al-metric-label">raw audio in</div>
+          </div>
+          <div class="al-arrow-block">
+            <div class="al-arrow-line" style="background: var(--green);"></div>
+            <div class="al-arrow-desc">Filters silence, noise, non-speech</div>
+          </div>
+          <div class="al-metric-out">
+            <div class="al-metric-val" style="color: var(--green);">4 hrs</div>
+            <div class="al-metric-label">speech audio out</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-layer-connector">&#x2193;</div>
+
+      <!-- Layer 2: On-device NPU -->
+      <div class="ai-layer layer-npu">
+        <div class="al-header">
+          <div class="al-badge" style="background: rgba(170,59,255,0.15); color: var(--purple);">Layer 2</div>
+          <div class="al-chip">&#x1F4F1; On iPhone NPU</div>
+        </div>
+        <div class="al-title">Local AI Processing</div>
+        <div class="al-subtitle">iPhone's Neural Processing Unit: blazing fast, battery efficient</div>
+        <div class="al-flow">
+          <div class="al-metric-in">
+            <div class="al-metric-val">4 hrs</div>
+            <div class="al-metric-label">speech audio in</div>
+          </div>
+          <div class="al-arrow-block">
+            <div class="al-arrow-line" style="background: var(--purple);"></div>
+            <div class="al-arrow-desc">Transcription, speaker diarization &amp; identification, emotion recognition, location, timestamp</div>
+          </div>
+          <div class="al-metric-out">
+            <div class="al-metric-val" style="color: var(--purple);">Structured data</div>
+            <div class="al-metric-label">ready for intelligence</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-layer-connector">&#x2193;</div>
+
+      <!-- Layer 3: Cloud agentic -->
+      <div class="ai-layer layer-cloud">
+        <div class="al-header">
+          <div class="al-badge" style="background: linear-gradient(90deg, rgba(6,181,141,0.15), rgba(170,59,255,0.15)); color: #fff;">Layer 3</div>
+          <div class="al-chip">&#x2601; Cloud</div>
+        </div>
+        <div class="al-title">Agentic Intelligence</div>
+        <div class="al-subtitle">The brain: reasoning, planning, and acting across apps</div>
+        <div class="al-flow">
+          <div class="al-metric-in">
+            <div class="al-metric-val">Structured data</div>
+            <div class="al-metric-label">context in</div>
+          </div>
+          <div class="al-arrow-block">
+            <div class="al-arrow-line" style="background: linear-gradient(90deg, var(--green), var(--purple));"></div>
+            <div class="al-arrow-desc">Task orchestration, memory, proactive actions, integrations</div>
+          </div>
+          <div class="al-metric-out">
+            <div class="al-metric-val" style="background: var(--gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Actions</div>
+            <div class="al-metric-label">emails, CRM, calendar, reminders</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Software is Live -->
+  <div>
+    <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--purple); margin-bottom: 1.5rem;">&#x1F4BB; Software</div>
+    <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+      <div style="font-size: 1.4rem; font-weight: 800;">The app is built and works today.</div>
+      <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite;"></div>
+    </div>
+    <div style="font-size: 0.95rem; color: var(--steel); max-width: 550px; margin-bottom: 2rem;"></div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+      <div class="product-img-card" style="background: rgba(255,255,255,0.02);">
+        <div style="width: 100%; aspect-ratio: 1/1.6; overflow: hidden; border-radius: 16px 16px 0 0; background: rgba(240,240,245,0.03);">
+          <img src="assets/app-home.png" alt="Audria App: Memory Map" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="img-label">Memory Map: conversations organized by topic</div>
+      </div>
+      <div class="product-img-card" style="background: rgba(255,255,255,0.02);">
+        <div style="width: 100%; aspect-ratio: 1/1.6; overflow: hidden; border-radius: 16px 16px 0 0; background: rgba(240,240,245,0.03);">
+          <img src="assets/app-proactive.png" alt="Audria App: Proactive Actions" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="img-label">Proactive suggestions from recent conversations</div>
+      </div>
+      <div class="product-img-card" style="background: rgba(255,255,255,0.02);">
+        <div style="width: 100%; aspect-ratio: 1/1.6; overflow: hidden; border-radius: 16px 16px 0 0; background: rgba(240,240,245,0.03);">
+          <img src="assets/app-actions.png" alt="Audria App: Action Review" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="img-label">Review and execute actions across apps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ GO TO MARKET ============ -->
+<section id="gtm" class="fade-in">
+  <div class="section-label">Go-To-Market</div>
+  <div class="section-title">Platform first. Verticals next.</div>
+  <div class="section-subtitle"></div>
+
+  <div class="gtm-visual">
+    <!-- Industry vertical bars -->
+    <div class="gtm-verticals">
+      <div class="gtm-bar c1">
+        <div class="gtm-icon">&#x1F4BC;</div>
+        <div class="gtm-label">Field Sales</div>
+      </div>
+      <div class="gtm-bar c1">
+        <div class="gtm-icon">&#x1F3E5;</div>
+        <div class="gtm-label">Healthcare</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x1F9D3;</div>
+        <div class="gtm-label">Elder Care</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x1F3E0;</div>
+        <div class="gtm-label">Real Estate</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x1F393;</div>
+        <div class="gtm-label">Education</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x1F50D;</div>
+        <div class="gtm-label">Market Research</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x1F4E6;</div>
+        <div class="gtm-label">Warehousing</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x1F46E;</div>
+        <div class="gtm-label">Law Enforcement</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x1F4B0;</div>
+        <div class="gtm-label">Financial Services</div>
+      </div>
+      <div class="gtm-bar c2">
+        <div class="gtm-icon">&#x2696;</div>
+        <div class="gtm-label">Legal</div>
+      </div>
+    </div>
+
+    <!-- Foundation platform -->
+    <div class="gtm-foundation">
+      <div class="gtm-var-tag">Value-Added Resellers build on top</div>
+      <div class="gtm-f-label">Audria Platform | Consumer Foundation</div>
+      <div class="gtm-f-desc">Voice capture &bull; Hybrid AI engine &bull; Agentic task execution &bull; Memory &amp; recall &bull; Integrations API &bull; On-device processing</div>
+    </div>
+
+    <div class="gtm-legend">
+      <div class="gtm-legend-item">
+        <div class="gtm-legend-dot" style="background: rgba(170,59,255,0.4);"></div>
+        Audria-led verticals
+      </div>
+      <div class="gtm-legend-item">
+        <div class="gtm-legend-dot" style="background: rgba(6,181,141,0.4);"></div>
+        Partner / VAR-led verticals
+      </div>
+    </div>
+  </div>
+
+  <!-- Field Sales Deep Dive -->
+  <div style="margin-top: 4rem; padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(170,59,255,0.15); background: rgba(170,59,255,0.02);">
+    <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--purple); margin-bottom: 0.8rem;">Why Field Sales First</div>
+    <div style="font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem;">A $7.2T market still running on gut instinct.</div>
+    <div style="font-size: 0.9rem; color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem;">
+      Rilla, Siro: proven category. 36-40% higher close rates. <span style="color: #fff; font-weight: 600;">But reps have to pull out their phone and hit record.</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+      <div style="padding: 1.5rem; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--graphite); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Their Problem</div>
+        <div style="font-size: 0.88rem; color: var(--steel); line-height: 1.6;">Reps forget. Managers see a fraction.</div>
+      </div>
+      <div style="padding: 1.5rem; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--graphite); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Audria's Edge</div>
+        <div style="font-size: 0.88rem; color: var(--steel); line-height: 1.6;">Always on. 100% capture. Zero friction.</div>
+      </div>
+      <div style="padding: 1.5rem; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--graphite); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Beyond Coaching</div>
+        <div style="font-size: 0.88rem; color: var(--steel); line-height: 1.6;">Auto follow-ups, CRM updates, real-time coaching.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ MARKET VALIDATION ============ -->
+<section id="market" class="fade-in">
+  <div class="section-label">Market Validation</div>
+  <div class="section-title">Big tech is betting on this.</div>
+  <div class="section-subtitle"></div>
+  <div class="market-cards">
+    <div class="market-card">
+      <h4>Meta Acquires Limitless (Dec 2025)</h4>
+      <p>Direct competitor acquired. Standalone devices discontinued.</p>
+    </div>
+    <div class="market-card">
+      <h4>Amazon Acquires Bee (Aug 2025)</h4>
+      <p>Second direct competitor acquired. Devices discontinued.</p>
+    </div>
+    <div class="market-card">
+      <h4>Ray-Ban Meta: 7M+ Units in 2025</h4>
+      <p>10-20M unit targets for 2026. Apple, Google entering.</p>
+    </div>
+    <div class="market-card">
+      <h4>Agentic AI &amp; Voice Interfaces</h4>
+      <p>OpenClaw, Anthropic, OpenAI driving mass agent adoption. Nvidia backing.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ BUSINESS MODEL ============ -->
+<section class="fade-in">
+  <div class="section-label">Business Model</div>
+  <div class="section-title">Hardware + Recurring Revenue.</div>
+  <div class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="feature-card">
+      <span class="f-icon">&#x1F4E6;</span>
+      <h4>Hardware: $299</h4>
+      <p>Includes $100 AI credits. Charging case (4+ charges).</p>
+    </div>
+    <div class="feature-card">
+      <span class="f-icon">&#x26A1;</span>
+      <h4>Pay-As-You-Go Credits</h4>
+      <p>Pay for what you use. Like electricity.</p>
+    </div>
+    <div class="feature-card">
+      <span class="f-icon">&#x1F3E2;</span>
+      <h4>Enterprise</h4>
+      <p>Per-seat licensing. Custom integrations.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ TEAM ============ -->
+<section id="team" class="fade-in">
+  <div class="section-label">Team</div>
+  <div class="section-title">Built by builders.</div>
+  <div class="section-subtitle">Delhi NCR, India. ODM in Shenzhen, China.</div>
+
+  <!-- Founder spotlight -->
+  <div class="team-founder-spotlight">
+    <div class="tfs-photo">
+      <img src="assets/team-pranay.jpeg" alt="Pranay Jain">
+    </div>
+    <div class="tfs-info">
+      <div class="tfs-name">Pranay Jain</div>
+      <div class="tfs-role">Founder & CEO</div>
+      <div class="tfs-bio">Two prior startups (HR Tech, Fitness Tech). Masters in Entrepreneurship from USC. B.Tech Hons in Computer Science.</div>
+    </div>
+  </div>
+
+  <!-- Core team grid -->
+  <div class="team-grid-v2">
+    <div class="team-card-v2">
+      <img class="tc-photo" src="assets/team-raghav.jpeg" alt="Raghav Jain">
+      <div class="tc-name">Raghav Jain</div>
+      <div class="tc-role">Founding Lead Engineer</div>
+      <div class="tc-desc">Core platform architecture</div>
+    </div>
+    <div class="team-card-v2">
+      <img class="tc-photo" src="assets/team-shubham.png" alt="Shubham Mishra">
+      <div class="tc-name">Shubham Mishra</div>
+      <div class="tc-role">Founding AI Engineer</div>
+      <div class="tc-desc">Hybrid AI architecture & NPU optimization</div>
+    </div>
+    <div class="team-card-v2">
+      <img class="tc-photo" src="assets/team-harshit.jpeg" alt="Harshit Kushwah">
+      <div class="tc-name">Harshit Kushwah</div>
+      <div class="tc-role">Founding Software Engineer</div>
+      <div class="tc-desc">iOS & on-device AI engineering</div>
+    </div>
+    <div class="team-card-v2">
+      <img class="tc-photo" src="assets/team-manish.png" alt="Manish Tamta">
+      <div class="tc-name">Manish Tamta</div>
+      <div class="tc-role">Founding iOS Engineer</div>
+      <div class="tc-desc">iOS app, Orb, & device integration</div>
+    </div>
+    <div class="team-card-v2">
+      <img class="tc-photo" src="assets/team-mayank.png" alt="Mayank Rawat">
+      <div class="tc-name">Mayank Rawat</div>
+      <div class="tc-role">Founding Hardware Engineer</div>
+      <div class="tc-desc">Arc hardware design & development</div>
+    </div>
+    <div class="team-card-v2">
+      <img class="tc-photo" src="assets/team-pradeep.png" alt="Pradeep Kumar">
+      <div class="tc-name">Pradeep Kumar</div>
+      <div class="tc-role">QA Engineer</div>
+      <div class="tc-desc">Quality assurance & testing</div>
+    </div>
+    <div class="team-card-v2">
+      <img class="tc-photo" src="assets/team-debu.jpeg" alt="Debu K Dasgupta">
+      <div class="tc-name">Debu K Dasgupta</div>
+      <div class="tc-role">Hardware Strategist</div>
+      <div class="tc-desc">Hardware strategy & architecture</div>
+    </div>
+  </div>
+
+  <!-- ODM Partner spotlight -->
+  <div class="team-partner-card">
+    <div class="tpc-badge">ODM PARTNER | SHENZHEN</div>
+    <div class="tpc-content">
+      <img class="tpc-photo" src="assets/team-frank.png" alt="Frank Young">
+      <div class="tpc-info">
+        <div class="tpc-name">Frank Young</div>
+        <div class="tpc-role">Founder & CEO, Shenzhen Shenli Electronics</div>
+        <div class="tpc-desc">Full ID/MD team. Hardware engineers. Qualcomm QCC agency.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Intro Video -->
+  <div style="margin-top: 2.5rem;">
+    <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--purple); margin-bottom: 1rem;">Meet the Team</div>
+    <div style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(170,59,255,0.15); background: #000; max-width: 400px;">
+      <video controls playsinline poster="" style="width: 100%; display: block; border-radius: 20px;">
+        <source src="assets/team-intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ TIMELINE ============ -->
+<section id="timeline" class="fade-in">
+  <div class="section-label">Timeline</div>
+  <div class="section-title">Fast and capital efficient.</div>
+  <div class="section-subtitle">11 months. $17K/mo burn. No venture capital. Software complete.</div>
+
+  <!-- Milestones achieved -->
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;">
+    <div style="padding: 0.6rem 1.2rem; border-radius: 100px; background: rgba(6,181,141,0.08); border: 1px solid rgba(6,181,141,0.15); font-size: 0.78rem; color: var(--green); font-weight: 600;">&#x2713; Full iOS app built</div>
+    <div style="padding: 0.6rem 1.2rem; border-radius: 100px; background: rgba(6,181,141,0.08); border: 1px solid rgba(6,181,141,0.15); font-size: 0.78rem; color: var(--green); font-weight: 600;">&#x2713; On-device AI pipeline working</div>
+    <div style="padding: 0.6rem 1.2rem; border-radius: 100px; background: rgba(6,181,141,0.08); border: 1px solid rgba(6,181,141,0.15); font-size: 0.78rem; color: var(--green); font-weight: 600;">&#x2713; Hardware prototype v5</div>
+    <div style="padding: 0.6rem 1.2rem; border-radius: 100px; background: rgba(6,181,141,0.08); border: 1px solid rgba(6,181,141,0.15); font-size: 0.78rem; color: var(--green); font-weight: 600;">&#x2713; ODM partner locked</div>
+    <div style="padding: 0.6rem 1.2rem; border-radius: 100px; background: rgba(6,181,141,0.08); border: 1px solid rgba(6,181,141,0.15); font-size: 0.78rem; color: var(--green); font-weight: 600;">&#x2713; Vendor selection complete</div>
+    <div style="padding: 0.6rem 1.2rem; border-radius: 100px; background: rgba(170,59,255,0.08); border: 1px solid rgba(170,59,255,0.15); font-size: 0.78rem; color: var(--purple); font-weight: 600;">$17K/mo burn rate</div>
+  </div>
+
+  <!-- Simple horizontal timeline -->
+  <div class="simple-timeline">
+    <!-- 2025 compact summary -->
+    <div class="st-year-label past">2025</div>
+    <div class="st-row past-row">
+      <div class="st-node done">
+        <div class="st-dot"></div>
+        <div class="st-date">Jan</div>
+        <div class="st-title">Idea inception</div>
+      </div>
+      <div class="st-connector done"></div>
+      <div class="st-node done">
+        <div class="st-dot"></div>
+        <div class="st-date">May</div>
+        <div class="st-title">Team of 4 joins</div>
+      </div>
+      <div class="st-connector done"></div>
+      <div class="st-node done">
+        <div class="st-dot"></div>
+        <div class="st-date">May–Oct</div>
+        <div class="st-title">On-device AI R&amp;D</div>
+      </div>
+      <div class="st-connector done"></div>
+      <div class="st-node done">
+        <div class="st-dot"></div>
+        <div class="st-date">Nov</div>
+        <div class="st-title">Pivot to hybrid cloud</div>
+      </div>
+    </div>
+
+    <!-- 2026 detailed -->
+    <div class="st-year-label current">2026</div>
+    <div class="st-row current-row">
+      <div class="st-node done">
+        <div class="st-dot"></div>
+        <div class="st-date">Jan</div>
+        <div class="st-title">TiEcon demo</div>
+      </div>
+      <div class="st-connector done"></div>
+      <div class="st-node done">
+        <div class="st-dot"></div>
+        <div class="st-date">Feb</div>
+        <div class="st-title">HW prototype done</div>
+      </div>
+      <div class="st-connector done"></div>
+      <div class="st-node now">
+        <div class="st-dot"></div>
+        <div class="st-label-now">NOW</div>
+        <div class="st-date">Mar</div>
+        <div class="st-title">SW v1 ready &amp; vendor locked</div>
+      </div>
+      <div class="st-connector future"></div>
+      <div class="st-node future">
+        <div class="st-dot"></div>
+        <div class="st-date">Mar–Apr</div>
+        <div class="st-title">ID &amp; MD design</div>
+      </div>
+      <div class="st-connector future"></div>
+      <div class="st-node future">
+        <div class="st-dot"></div>
+        <div class="st-date">May–Jun</div>
+        <div class="st-title">Tooling &amp; test production</div>
+      </div>
+      <div class="st-connector future"></div>
+      <div class="st-node future">
+        <div class="st-dot"></div>
+        <div class="st-date">Jul–Aug</div>
+        <div class="st-title">Mass production</div>
+      </div>
+      <div class="st-connector future"></div>
+      <div class="st-node future">
+        <div class="st-dot"></div>
+        <div class="st-date">Sep</div>
+        <div class="st-title">Delivery</div>
+      </div>
+      <div class="st-connector future"></div>
+      <div class="st-node launch">
+        <div class="st-dot"></div>
+        <div class="st-date">Nov</div>
+        <div class="st-title">US Launch &#x1F680;</div>
+      </div>
+    </div>
+
+    <!-- 2027 -->
+    <div class="st-year-label current" style="color: var(--green);">2027</div>
+    <div class="st-row">
+      <div class="st-node launch">
+        <div class="st-dot"></div>
+        <div class="st-date">Jan</div>
+        <div class="st-title">CES Showcase &#x1F3AF;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two-track summary cards -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem;">
+    <div style="padding: 2rem; border-radius: 20px; border: 1px solid rgba(6,181,141,0.15); background: rgba(6,181,141,0.03);">
+      <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green); margin-bottom: 0.8rem;">&#x2699; Hardware</div>
+      <div style="font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem;">Shenzhen ODM Partnership</div>
+      <div style="font-size: 0.82rem; color: var(--steel); line-height: 1.6;">ID &amp; MD &#x2192; HW/SW integration &#x2192; Tooling &#x2192; Test production &#x2192; 15,000 unit mass production run &#x2192; Delivery by September.</div>
+    </div>
+    <div style="padding: 2rem; border-radius: 20px; border: 1px solid rgba(170,59,255,0.15); background: rgba(170,59,255,0.03);">
+      <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--purple); margin-bottom: 0.8rem;">&#x1F4BB; Software</div>
+      <div style="font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem;">5 &#x2192; 15 Engineers</div>
+      <div style="font-size: 0.82rem; color: var(--steel); line-height: 1.6;">Scaling 3x. Production-ready by November.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ USE OF FUNDS ============ -->
+<section id="funds" class="fade-in">
+  <div class="section-label">Use of Funds</div>
+  <div class="section-title">Where your capital goes.</div>
+  <div class="section-subtitle">18-month runway. DVT to US launch.</div>
+  <div class="funds-container">
+    <div class="funds-visual">
+      <div class="funds-bar-group">
+        <div class="fund-item">
+          <div class="fund-header">
+            <span class="fund-label">Hardware (NRE, Tooling, Manufacturing, Certs)</span>
+            <span class="fund-amount">$580,000</span>
+          </div>
+          <div class="fund-bar">
+            <div class="fund-bar-fill" style="width: 0%" data-width="44%"></div>
+          </div>
+        </div>
+        <div class="fund-item">
+          <div class="fund-header">
+            <span class="fund-label">Engineering Team (India)</span>
+            <span class="fund-amount">$519,000</span>
+          </div>
+          <div class="fund-bar">
+            <div class="fund-bar-fill" style="width: 0%" data-width="40%"></div>
+          </div>
+        </div>
+        <div class="fund-item">
+          <div class="fund-header">
+            <span class="fund-label">Marketing</span>
+            <span class="fund-amount">$100,000</span>
+          </div>
+          <div class="fund-bar">
+            <div class="fund-bar-fill" style="width: 0%" data-width="8%"></div>
+          </div>
+        </div>
+        <div class="fund-item">
+          <div class="fund-header">
+            <span class="fund-label">Patent, IP & Trademarks</span>
+            <span class="fund-amount">$30,000</span>
+          </div>
+          <div class="fund-bar">
+            <div class="fund-bar-fill" style="width: 0%" data-width="2.3%"></div>
+          </div>
+        </div>
+        <div class="fund-item">
+          <div class="fund-header">
+            <span class="fund-label">Compliance (CCPA, SOC2, HIPAA)</span>
+            <span class="fund-amount">$20,000</span>
+          </div>
+          <div class="fund-bar">
+            <div class="fund-bar-fill" style="width: 0%" data-width="1.5%"></div>
+          </div>
+        </div>
+        <div class="fund-item">
+          <div class="fund-header">
+            <span class="fund-label">Office, Travel & Legal</span>
+            <span class="fund-amount">$60,000</span>
+          </div>
+          <div class="fund-bar">
+            <div class="fund-bar-fill" style="width: 0%" data-width="4.6%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="funds-summary">
+      <div class="fund-total">$1.5M</div>
+      <div class="fund-total-label">Raise amount (with buffer)</div>
+      <div class="fund-detail">
+        <span class="fd-label">Hardware Costs</span>
+        <span class="fd-value">$580K</span>
+      </div>
+      <div class="fund-detail">
+        <span class="fd-label">Engineering Team</span>
+        <span class="fd-value">$519K</span>
+      </div>
+      <div class="fund-detail">
+        <span class="fd-label">Marketing</span>
+        <span class="fd-value">$100K</span>
+      </div>
+      <div class="fund-detail">
+        <span class="fd-label">IP & Compliance</span>
+        <span class="fd-value">$50K</span>
+      </div>
+      <div class="fund-detail">
+        <span class="fd-label">Operations</span>
+        <span class="fd-value">$60K</span>
+      </div>
+      <div class="fund-detail" style="border-top: 2px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 0.5rem;">
+        <span class="fd-label" style="color: #fff; font-weight: 600;">Core Total</span>
+        <span class="fd-value" style="background: var(--gradient-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$1.31M</span>
+      </div>
+      <div style="margin-top: 1.5rem; padding: 1rem; border-radius: 12px; background: rgba(6,181,141,0.08); border: 1px solid rgba(6,181,141,0.15);">
+        <div style="font-size: 0.8rem; color: var(--green); font-weight: 600; margin-bottom: 0.3rem;">Manufacturing Target</div>
+        <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">15,000 units</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ RESEARCH ============ -->
+<section class="fade-in">
+  <div class="section-label">Research & Updates</div>
+  <div class="section-title">We publish our thinking.</div>
+  <div class="section-subtitle"></div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+    <a href="https://updates.audria.tech/" target="_blank" rel="noopener" style="text-decoration: none; padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); transition: all 0.3s; display: block;" onmouseover="this.style.borderColor='rgba(170,59,255,0.25)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'; this.style.transform='translateY(0)'">
+      <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green); margin-bottom: 0.8rem;">Research Blog</div>
+      <div style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">On-Device AI Research Updates</div>
+      <div style="font-size: 0.85rem; color: var(--steel); line-height: 1.6; margin-bottom: 1.2rem;"></div>
+      <div style="font-size: 0.8rem; font-weight: 600; color: var(--purple);">updates.audria.tech &rarr;</div>
+    </a>
+    <a href="https://updates.audria.tech/blogs/topic-drift-detection/" target="_blank" rel="noopener" style="text-decoration: none; padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); transition: all 0.3s; display: block;" onmouseover="this.style.borderColor='rgba(6,181,141,0.25)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'; this.style.transform='translateY(0)'">
+      <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--purple); margin-bottom: 0.8rem;">Latest Research</div>
+      <div style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Topic Drift Detection</div>
+      <div style="font-size: 0.85rem; color: var(--steel); line-height: 1.6; margin-bottom: 1.2rem;"></div>
+      <div style="font-size: 0.8rem; font-weight: 600; color: var(--green);">Read the research &rarr;</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ COMPUTING EVOLUTION ============ -->
+<section class="fade-in" style="text-align: center;">
+  <div class="section-label" style="text-align: center;">The Shift</div>
+  <div class="section-title" style="text-align: center;">Computing is evolving.</div>
+  <div class="section-subtitle" style="text-align: center; margin: 0 auto 3rem;"></div>
+  <div class="evolution">
+    <div class="evo-stage past">Screens</div>
+    <div class="evo-arrow">&#x2192;</div>
+    <div class="evo-stage past">Text</div>
+    <div class="evo-arrow">&#x2192;</div>
+    <div class="evo-stage past">Conversation</div>
+    <div class="evo-arrow">&#x2192;</div>
+    <div class="evo-stage current">Ambient Intelligence</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ IDEA PROOF ============ -->
+<section id="proof" class="fade-in">
+  <div class="section-label">Idea Proof</div>
+  <div class="section-title">We're not alone in seeing this.</div>
+  <div class="section-subtitle"></div>
+
+  <div class="idea-proof-grid">
+    <div class="ip-card">
+      <div class="ip-quote">"2026 marks the death of the prompt box for mainstream users. The next wave of AI apps will have zero visible prompting &mdash; they'll observe what you're doing and intervene proactively with actions for you to review."</div>
+      <div class="ip-author">
+        <div class="ip-name">Marc Andrusko</div>
+        <div class="ip-role">Andreessen Horowitz (a16z)</div>
+      </div>
+    </div>
+
+    <a href="https://youtu.be/SfOaZIGJ_gs?si=bhnGqTVCwAFezGrW&t=2455" target="_blank" rel="noopener" class="ip-card ip-link">
+      <div class="ip-play">&#x25B6;</div>
+      <div class="ip-quote">"A new form factor, context aware, just ambiently there, no on or off."</div>
+      <div class="ip-author">
+        <div class="ip-name">Sam Altman</div>
+        <div class="ip-role">CEO, OpenAI</div>
+      </div>
+      <div class="ip-watch">Watch clip &rarr;</div>
+    </a>
+
+    <a href="https://youtu.be/ann-bfuaaEs?si=VuneVsqiO5k0Knhj&t=490" target="_blank" rel="noopener" class="ip-card ip-link">
+      <div class="ip-play">&#x25B6;</div>
+      <div class="ip-quote">Bullish on the earphone voice-first form factor as the future of personal AI interaction.</div>
+      <div class="ip-author">
+        <div class="ip-name">Matthew Berman</div>
+        <div class="ip-role">AI Commentator &amp; Investor</div>
+      </div>
+      <div class="ip-watch">Watch clip &rarr;</div>
+    </a>
+
+    <a href="https://youtu.be/ef3D5Ak1HP4?si=L_tDZqAs5Uiesv6z&t=369" target="_blank" rel="noopener" class="ip-card ip-link">
+      <div class="ip-play">&#x25B6;</div>
+      <div class="ip-quote">"The ideal form factor and interface: a voice-first computer, behind-the-ear, all-day-wear, proactive."</div>
+      <div class="ip-author">
+        <div class="ip-name">Mati Staniszewski</div>
+        <div class="ip-role">Founder &amp; CEO, ElevenLabs</div>
+      </div>
+      <div class="ip-watch">Watch clip &rarr;</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ THE ASK ============ -->
+<section id="ask" class="ask-section fade-in">
+  <div class="section-label" style="text-align: center;">Investment Opportunity</div>
+  <div class="section-title" style="text-align: center; margin: 0 auto 0.5rem;">The Ask.</div>
+  <div class="section-subtitle" style="text-align: center; margin: 0 auto 2rem;"></div>
+  <div class="ask-numbers">
+    <div class="ask-num">
+      <div class="ask-value">$1.5M</div>
+      <div class="ask-label">Raise Target</div>
+    </div>
+    <div class="ask-num">
+      <div class="ask-value">$16M</div>
+      <div class="ask-label">Pre-Money Valuation</div>
+    </div>
+    <div class="ask-num">
+      <div class="ask-value">18 mo</div>
+      <div class="ask-label">Runway</div>
+    </div>
+  </div>
+  <div class="ask-goals">
+    <div class="ask-goal">Complete DVT &rarr; PVT &rarr; Mass Production</div>
+    <div class="ask-goal">Scale India Engineering Team</div>
+    <div class="ask-goal">Alpha Launch with Early Adopters</div>
+    <div class="ask-goal">Go-to-Market for US Launch</div>
+    <div class="ask-goal">Prepare for Series A</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ VISION ============ -->
+<section class="vision-section fade-in">
+  <div class="section-label" style="text-align: center;">Vision</div>
+  <div style="margin-bottom: 2.5rem;">
+    <img src="assets/logo-icon.png" alt="Audria" style="height: 60px; opacity: 0.8;">
+  </div>
+  <p class="vision-text">
+    <em>Technology arrives through voice.</em>
+  </p>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <img src="assets/logo-white.png" alt="Audria" style="height: 24px; opacity: 0.5;">
+  <p style="margin-top: 0.8rem;">Audria Inc. &copy; 2026 | Voice-first ambient intelligence.</p>
+  <p style="margin-top: 0.4rem; font-size: 0.72rem; color: var(--arsenic);">Confidential | For investor review only.</p>
+</footer>
+
+<!-- ============ SCROLL ANIMATION SCRIPT ============ -->
+<script>
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Animate fund bars when visible
+      entry.target.querySelectorAll('.fund-bar-fill').forEach(bar => {
+        const w = bar.getAttribute('data-width');
+        if (w) setTimeout(() => bar.style.width = w, 200);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Navbar background + scroll progress + scroll indicator
+const progressBar = document.querySelector('.scroll-progress');
+const siDots = document.querySelectorAll('.si-dot');
+const trackedSections = [];
+siDots.forEach(dot => {
+  const id = dot.getAttribute('data-section');
+  const el = document.getElementById(id);
+  if (el) trackedSections.push({ id, el, dot });
+  dot.addEventListener('click', () => {
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.borderBottomColor = 'rgba(255,255,255,0.08)';
+    nav.style.background = 'rgba(0,2,2,0.95)';
+  } else {
+    nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
+    nav.style.background = 'rgba(0,2,2,0.85)';
+  }
+  // Scroll progress
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = scrollPercent + '%';
+  // Active section detection
+  const viewMid = scrollTop + window.innerHeight * 0.4;
+  let activeId = '';
+  for (let i = trackedSections.length - 1; i >= 0; i--) {
+    if (trackedSections[i].el.offsetTop <= viewMid) {
+      activeId = trackedSections[i].id;
+      break;
+    }
+  }
+  siDots.forEach(d => d.classList.remove('active'));
+  if (activeId) {
+    const activeDot = document.querySelector('.si-dot[data-section="' + activeId + '"]');
+    if (activeDot) activeDot.classList.add('active');
+  }
+});
+
+// ---- VISITOR TRACKER ----
+(function() {
+  const WEBHOOK_URL = 'https://script.google.com/a/macros/audria.tech/s/AKfycbyXGM4623EgH3-6u3X93tQ54psV0JZvlbW7h3d5ZqYaVp1kYSuuIiFg8qmIGH7PpEf-zA/exec';
+  if (WEBHOOK_URL.includes('__GOOGLE')) return; // Skip if not configured
+
+  const visitId = Date.now() + '-' + Math.random().toString(36).substr(2, 6);
+  const startTime = Date.now();
+  let maxScroll = 0;
+  const sectionsViewed = new Set();
+  const sectionEls = document.querySelectorAll('section[id]');
+
+  // Track max scroll depth
+  window.addEventListener('scroll', function() {
+    const scrollPct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+    if (scrollPct > maxScroll) maxScroll = scrollPct;
+  });
+
+  // Track sections viewed via Intersection Observer
+  const trackObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && entry.target.id) {
+        sectionsViewed.add(entry.target.id);
+      }
+    });
+  }, { threshold: 0.3 });
+  sectionEls.forEach(function(el) { trackObserver.observe(el); });
+
+  // Send data on page leave
+  function sendData() {
+    const data = {
+      visitId: visitId,
+      timestamp: new Date().toISOString(),
+      timeOnPage: Math.round((Date.now() - startTime) / 1000),
+      maxScrollPct: maxScroll,
+      sectionsViewed: Array.from(sectionsViewed).join(', '),
+      referrer: document.referrer || 'direct',
+      userAgent: navigator.userAgent,
+      screenSize: screen.width + 'x' + screen.height,
+      language: navigator.language,
+      url: location.href
+    };
+    const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+    navigator.sendBeacon(WEBHOOK_URL, blob);
+  }
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') sendData();
+  });
+  window.addEventListener('beforeunload', sendData);
+})();
+</script>
+
+</body>
+</html>
