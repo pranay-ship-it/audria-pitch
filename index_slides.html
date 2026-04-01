@@ -870,7 +870,7 @@ section, .hero {
   max-height: 100vh !important;
   height: 100vh !important;
   overflow: hidden !important;
-  padding: 3rem 3rem 2rem !important;
+  padding: 3rem 4rem 2rem !important;
   margin: 0 auto !important;
   display: flex !important;
   flex-direction: column !important;
@@ -893,43 +893,48 @@ section, .hero {
 }
 .hero-text h1 { font-size: 3.5rem !important; }
 
+/* Global font size bump for slide mode */
+html { font-size: 18px !important; }
+body { font-size: 1rem !important; }
+
 /* Scale down section content to fit viewport */
-.section-title { font-size: 2.2rem !important; margin-bottom: 0.6rem !important; }
-.section-subtitle { font-size: 0.95rem !important; margin-bottom: 1.8rem !important; max-width: 640px; }
-.section-label { margin-bottom: 0.5rem !important; }
+.section-title { font-size: 2.4rem !important; margin-bottom: 0.6rem !important; }
+.section-subtitle { font-size: 1.05rem !important; margin-bottom: 1.5rem !important; max-width: 720px; }
+.section-label { margin-bottom: 0.5rem !important; font-size: 0.75rem !important; }
 
 /* Tighten grids */
 .features-grid, .usecase-grid, .product-grid { gap: 1rem !important; }
 .features-grid { margin-top: 0 !important; }
 .feature-card { padding: 1.5rem 1.2rem !important; }
-.feature-card h4 { font-size: 0.95rem !important; margin-bottom: 0.3rem !important; }
-.feature-card p { font-size: 0.8rem !important; line-height: 1.5 !important; }
+.feature-card .f-icon { display: none !important; }
+.feature-card h4 { font-size: 1rem !important; margin-bottom: 0.15rem !important; }
+.feature-card p { font-size: 0.85rem !important; line-height: 1.4 !important; }
 
 .usecase-grid { margin-top: 1rem !important; }
 .usecase-card { padding: 1.4rem 1.2rem !important; }
-.usecase-card h4 { font-size: 0.9rem !important; margin-bottom: 0.3rem !important; }
-.usecase-card p { font-size: 0.78rem !important; line-height: 1.5 !important; }
-.usecase-card .uc-icon { font-size: 1.4rem !important; margin-bottom: 0.5rem !important; }
+.usecase-card h4 { font-size: 1rem !important; margin-bottom: 0.3rem !important; }
+.usecase-card p { font-size: 0.82rem !important; line-height: 1.45 !important; }
+.usecase-card .uc-icon { font-size: 1.4rem !important; margin-bottom: 0.4rem !important; }
 
 /* Problem/solution */
 .problem-solution { gap: 2rem !important; }
 .ps-card { padding: 1.8rem !important; }
-.ps-card h3 { font-size: 1.2rem !important; margin-bottom: 0.5rem !important; }
-.ps-card p { font-size: 0.85rem !important; }
+.ps-card h3 { font-size: 1.3rem !important; margin-bottom: 0.5rem !important; }
+.ps-card p { font-size: 0.9rem !important; }
 .ps-card .ps-icon { width: 40px !important; height: 40px !important; margin-bottom: 0.8rem !important; font-size: 1.2rem !important; }
 
 /* Computing evolution flow */
 .computing-evolution-flow { gap: 0 !important; margin-bottom: 0 !important; }
 .cev-step { padding: 1rem 0.8rem !important; }
-.cev-content h4 { font-size: 0.82rem !important; }
-.cev-content p { font-size: 0.72rem !important; }
+.cev-content h4 { font-size: 0.9rem !important; }
+.cev-content p { font-size: 0.78rem !important; }
 
 /* AI layers */
-.ai-layers { gap: 0 !important; }
-.ai-layer { padding: 1rem 1.5rem !important; }
-.ai-layer-connector { padding: 0.1rem 0 !important; font-size: 1rem !important; }
-.al-title { font-size: 0.95rem !important; }
-.al-subtitle { font-size: 0.72rem !important; margin-bottom: 0.5rem !important; }
+.ai-layers { gap: 0 !important; max-width: 100% !important; }
+.ai-layer { padding: 0.8rem 1.5rem !important; }
+.ai-layer-connector { padding: 0.05rem 0 !important; font-size: 0.9rem !important; }
+.al-title { font-size: 1.05rem !important; }
+.al-subtitle { font-size: 0.8rem !important; margin-bottom: 0.4rem !important; }
 .al-metric-val { font-size: 1rem !important; }
 
 /* Product images */
@@ -938,8 +943,8 @@ section, .hero {
 /* Market cards */
 .market-cards { margin-top: 1.5rem !important; gap: 1rem !important; }
 .market-card { padding: 1.5rem !important; }
-.market-card h4 { font-size: 0.95rem !important; margin-bottom: 0.4rem !important; }
-.market-card p { font-size: 0.8rem !important; }
+.market-card h4 { font-size: 1.05rem !important; margin-bottom: 0.4rem !important; }
+.market-card p { font-size: 0.88rem !important; }
 
 /* Funds */
 .funds-container { margin-top: 1.5rem !important; gap: 2rem !important; }
@@ -947,14 +952,14 @@ section, .hero {
 
 /* Team */
 .team-founder-spotlight { padding: 1.5rem !important; margin-bottom: 1.2rem !important; gap: 1.2rem !important; }
-.tfs-name { font-size: 1.1rem !important; }
-.tfs-bio { font-size: 0.78rem !important; }
+.tfs-name { font-size: 1.2rem !important; }
+.tfs-bio { font-size: 0.85rem !important; }
 .team-grid-v2 { gap: 0.8rem !important; margin-bottom: 1rem !important; }
 .team-card-v2 { padding: 1rem 0.8rem !important; }
 .tc-photo { width: 48px !important; height: 48px !important; margin-bottom: 0.6rem !important; }
-.tc-name { font-size: 0.78rem !important; }
-.tc-role { font-size: 0.65rem !important; }
-.tc-desc { font-size: 0.62rem !important; }
+.tc-name { font-size: 0.85rem !important; }
+.tc-role { font-size: 0.72rem !important; }
+.tc-desc { font-size: 0.68rem !important; }
 .team-partner-card { padding: 1rem !important; margin-top: 0.3rem !important; }
 .tpc-badge { margin-bottom: 0.4rem !important; }
 
@@ -975,12 +980,12 @@ section, .hero {
 
 /* Vision */
 .vision-section { max-width: 100% !important; padding: 3rem !important; }
-.vision-text { font-size: 1.3rem !important; line-height: 1.7 !important; }
+.vision-text { font-size: 1.4rem !important; line-height: 1.7 !important; }
 
 /* Idea proof */
 .idea-proof-grid { gap: 1rem !important; }
 .ip-card { padding: 1.5rem !important; }
-.ip-quote { font-size: 0.85rem !important; margin-bottom: 0.8rem !important; line-height: 1.5 !important; }
+.ip-quote { font-size: 0.92rem !important; margin-bottom: 0.8rem !important; line-height: 1.5 !important; }
 
 /* Business model — let cards fill more space */
 section .features-grid { margin-top: 2rem !important; }
@@ -1136,19 +1141,23 @@ section, .hero { scroll-snap-align: start !important; }
 
 <!-- ============ MEET ARC ============ -->
 <section id="arc" class="fade-in">
-  <div class="section-label">Introducing</div>
-  <div class="section-title">Meet Arc.</div>
-  <div class="section-subtitle">
+  <div class="section-label" style="margin-bottom: 0.3rem;">Introducing</div>
+  <div class="section-title" style="margin-bottom: 0.4rem;">Meet Arc.</div>
+  <div class="section-subtitle" style="margin-bottom: 1rem; font-size: 1.1rem;">
     A behind-the-ear voice computer designed to be worn all day. Open ears, extremely light.
   </div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; flex: 1; min-height: 0;">
-    <div class="product-img-card" style="overflow: hidden; display: flex; flex-direction: column; min-height: 0;">
-      <img src="https://pranay-ship-it.github.io/audria-pitch/assets/product-lifestyle-1.png" alt="Arc worn, profile" style="object-fit: cover; flex: 1; min-height: 0; width: 100%;">
-      <div class="img-label" style="flex-shrink: 0;">Arc | Worn behind the ear</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; flex: 1; min-height: 0; overflow: hidden;">
+    <div class="product-img-card" style="overflow: hidden; display: flex; flex-direction: column; min-height: 0; border-radius: 16px;">
+      <div style="flex: 1; min-height: 0; overflow: hidden;">
+        <img src="https://pranay-ship-it.github.io/audria-pitch/assets/product-lifestyle-1.png" alt="Arc worn, profile" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="img-label" style="flex-shrink: 0; padding: 0.6rem 1rem; font-size: 0.9rem;">Arc | Worn behind the ear</div>
     </div>
-    <div class="product-img-card" style="overflow: hidden; display: flex; flex-direction: column; min-height: 0;">
-      <img src="https://pranay-ship-it.github.io/audria-pitch/assets/product-lifestyle-2.png" alt="Arc worn, close-up" style="object-fit: cover; flex: 1; min-height: 0; width: 100%;">
-      <div class="img-label" style="flex-shrink: 0;">Arc | Close-up on ear</div>
+    <div class="product-img-card" style="overflow: hidden; display: flex; flex-direction: column; min-height: 0; border-radius: 16px;">
+      <div style="flex: 1; min-height: 0; overflow: hidden;">
+        <img src="https://pranay-ship-it.github.io/audria-pitch/assets/product-lifestyle-2.png" alt="Arc worn, close-up" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="img-label" style="flex-shrink: 0; padding: 0.6rem 1rem; font-size: 0.9rem;">Arc | Close-up on ear</div>
     </div>
   </div>
 </section>
@@ -1251,40 +1260,31 @@ section, .hero { scroll-snap-align: start !important; }
 
   <!-- Key Hardware Design Choices -->
   <div>
-    <div style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.3rem;">Built different.</div>
-    <div style="font-size: 0.85rem; color: var(--steel); max-width: 650px; margin-bottom: 0.8rem;">
-      Every design choice serves one goal: a device you forget you're wearing but can't imagine living without.
-    </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <span class="f-icon">&#x2600;</span>
-        <h4>All-Day Wear</h4>
-        <p>Ultra-light behind-the-ear form factor. Designed to be worn from morning to night without fatigue.</p>
+    <div style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.6rem;">Built different. <span style="font-weight: 400; font-size: 0.95rem; color: var(--steel);">Every design choice serves one goal: a device you forget you're wearing but can't imagine living without.</span></div>
+    <div class="features-grid" style="grid-template-columns: repeat(3, 1fr) !important; gap: 0.8rem !important;">
+      <div class="feature-card" style="padding: 0.8rem 1rem !important; display: flex; flex-direction: column; gap: 0.2rem;">
+        <h4 style="display: flex; align-items: center; gap: 0.4rem;"><span style="font-size: 1.1rem;">&#x2600;</span> All-Day Wear</h4>
+        <p>Ultra-light behind-the-ear form factor. Morning to night without fatigue.</p>
       </div>
-      <div class="feature-card">
-        <span class="f-icon">&#x1F442;</span>
-        <h4>Open-Ear Audio</h4>
-        <p>Keeps your ears open to the world while delivering discreet audio back to you. Works alongside AirPods and hearing aids.</p>
+      <div class="feature-card" style="padding: 0.8rem 1rem !important; display: flex; flex-direction: column; gap: 0.2rem;">
+        <h4 style="display: flex; align-items: center; gap: 0.4rem;"><span style="font-size: 1.1rem;">&#x1F442;</span> Open-Ear Audio</h4>
+        <p>Ears open to the world while delivering discreet audio. Works with AirPods and hearing aids.</p>
       </div>
-      <div class="feature-card">
-        <span class="f-icon">&#x1F399;</span>
-        <h4>3-Mic Beamforming</h4>
-        <p>Two rear mics capture who you're talking to, one front mic captures you. Highest quality directional audio.</p>
+      <div class="feature-card" style="padding: 0.8rem 1rem !important; display: flex; flex-direction: column; gap: 0.2rem;">
+        <h4 style="display: flex; align-items: center; gap: 0.4rem;"><span style="font-size: 1.1rem;">&#x1F399;</span> 3-Mic Beamforming</h4>
+        <p>Two rear mics capture who you're talking to, one front mic captures you.</p>
       </div>
-      <div class="feature-card">
-        <span class="f-icon">&#x1F4A0;</span>
-        <h4>Head Gesture Control</h4>
-        <p>6-axis IMU tracks head movements. Nod to confirm, shake to dismiss. No hands, no screen needed.</p>
+      <div class="feature-card" style="padding: 0.8rem 1rem !important; display: flex; flex-direction: column; gap: 0.2rem;">
+        <h4 style="display: flex; align-items: center; gap: 0.4rem;"><span style="font-size: 1.1rem;">&#x1F4A0;</span> Head Gesture Control</h4>
+        <p>6-axis IMU tracks head movements. Nod to confirm, shake to dismiss.</p>
       </div>
-      <div class="feature-card">
-        <span class="f-icon">&#x1F453;</span>
-        <h4>Works With Your Stack</h4>
-        <p>Designed to not interfere with glasses, AirPods, or hearing aids. Fits into your life, not the other way around.</p>
+      <div class="feature-card" style="padding: 0.8rem 1rem !important; display: flex; flex-direction: column; gap: 0.2rem;">
+        <h4 style="display: flex; align-items: center; gap: 0.4rem;"><span style="font-size: 1.1rem;">&#x1F453;</span> Works With Your Stack</h4>
+        <p>Designed to not interfere with glasses, AirPods, or hearing aids.</p>
       </div>
-      <div class="feature-card">
-        <span class="f-icon">&#x1F7E2;</span>
-        <h4>LED Status Rings</h4>
-        <p>Three triangular indicator rings signal listening, responding, or on-call status to people around you. Social trust, built in.</p>
+      <div class="feature-card" style="padding: 0.8rem 1rem !important; display: flex; flex-direction: column; gap: 0.2rem;">
+        <h4 style="display: flex; align-items: center; gap: 0.4rem;"><span style="font-size: 1.1rem;">&#x1F7E2;</span> LED Status Rings</h4>
+        <p>Indicator rings signal listening, responding, or on-call status. Social trust, built in.</p>
       </div>
     </div>
   </div>
